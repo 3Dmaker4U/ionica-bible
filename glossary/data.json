@@ -1,0 +1,6 @@
+[
+  { "term": "JavaScript", "definition": "A high-level, interpreted programming language." },
+  { "term": "HTML", "definition": "The standard markup language for documents designed to be displayed in a web browser." },
+  { "term": "JSON", "definition": "A lightweight data-interchange format that is easy for humans to read and write." },
+  { "term": "DOM", "definition": "The Document Object Model, a programming interface for web documents." }
+]
