@@ -1,0 +1,42 @@
+{
+    "character": "Cody",
+    "title": "The Master Locksmith",
+    "series": "Aventurile lui Ionică",
+    "physical_traits": {
+        "species": "Cat",
+        "breed": "Long-haired Tabby and White",
+        "build": "Chubby, pear-shaped fatty build",
+        "stance": "Bipedal (standing upright)",
+        "fur_description": "Extremely dense, fluffy long-haired fur; chocolate brown tabby patterns on the head and body with a brilliant white, curly ruff around the neck and chest",
+        "facial_features": "Round face with a small pink nose and white paws",
+        "eyes": "Large, soulful golden-green eyes"
+    },
+    "expression": {
+        "mood": "Focused, professional, and mysterious",
+        "mouth": "Closed, determined neutral expression",
+        "gaze": "Direct and steady"
+    },
+    "outfit_and_accessories": {
+        "headgear": {
+            "mask": "Black leather burglar-style eye mask",
+            "lighting": "Brass-mounted adjustable headlamp with a glowing warm lens, secured by brown leather straps"
+        },
+        "clothing": "Tactical olive-green canvas vest featuring multiple pockets, brass buttons, and specialized leather loops for locksmith tools",
+        "tools": {
+            "right_paw": "A large brass ring holding several antique skeleton keys",
+            "left_paw": "A single specialized lock-pick tool, with a leather tool pouch attached to the wrist",
+            "vest_pockets": "Visible magnifying glasses, tweezers, and various metallic picking instruments"
+        },
+        "footwear": "Sturdy dark brown leather work boots with rounded toes",
+        "collar": "None"
+    },
+    "art_style": {
+        "render_type": "Pixar-style 3D digital render",
+        "lighting": "High-quality subsurface scattering on long fur and metallic brass textures",
+        "background": "Solid, muted sage-green studio",
+        "branding": [
+            "iON Aventurile lui Ionică logo (bottom right)",
+            "Nano Banana leaf logo (bottom right)"
+        ]
+    }
+}
