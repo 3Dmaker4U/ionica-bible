@@ -1,45 +1,42 @@
 {
-  character_name Nonel,
-  archetype 1930s-style village street kid  mischievous investigator,
-  physical_traits {
-    species Cat (Tabby),
-    fur_pattern Brown and black striped tabby with specific white markings,
-    white_markings [
-      Full white muzzle,
-      Broad white chest and abdomen area,
-      White front paws (mittens),
-      White back feet and lower legs
-    ],
-    tail Banded tabby tail with a notably longer and darker black tip,
-    eyes {
-      color Pale green,
-      expression Mature, serious, slightly 'downcast' or suspicious,
-      shape Large and cartoonish but with heavy-lidded upper orbits (concave downwards)
-    }
+  "character": "Cody",
+  "title": "The Master Locksmith",
+  "series": "Aventurile lui Ionică",
+  "physical_traits": {
+    "species": "Cat",
+    "breed": "Long-haired Tabby and White",
+    "build": "Chubby, pear-shaped fatty build",
+    "stance": "Bipedal (standing upright)",
+    "fur_description": "Extremely dense, fluffy long-haired fur; chocolate brown tabby patterns on the head and body with a brilliant white, curly ruff around the neck and chest",
+    "facial_features": "Round face with a small pink nose and white paws",
+    "eyes": "Large, soulful golden-green eyes"
   },
-  outfit_and_accessories {
-    headwear {
-      type 1930s-style newsboy cap (flat cap),
-      texture Grey salt-and-pepper herringbone tweed,
-      fit Small, worn tilted to one side to leave one ear completely visible
-    },
-    clothing {
-      type Short grey work jacket,
-      style Open front, collar raised,
-      length Cropped (bottom edge aligned with sleeve ends),
-      details [
-        Single pair of hand-pockets,
-        Texture matching the cap's aesthetic
-      ]
-    },
-    artifact {
-      item Sling  Slingshot,
-      details Classic Y-shaped wooden handle with a leather pouch and elastic bands
-    }
+  "expression": {
+    "mood": "Focused, professional, and mysterious",
+    "mouth": "Closed, determined neutral expression",
+    "gaze": "Direct and steady"
   },
-  visual_style {
-    render_type 3D High-fidelity digital render,
-    aesthetic Pixar-style with soft subsurface scattering and dense fur texture,
-    background Solid muted sage green studio backdrop
+  "outfit_and_accessories": {
+    "headgear": {
+      "mask": "Black leather burglar-style eye mask",
+      "lighting": "Brass-mounted adjustable headlamp with a glowing warm lens, secured by brown leather straps"
+    },
+    "clothing": "Tactical olive-green canvas vest featuring multiple pockets, brass buttons, and specialized leather loops for locksmith tools",
+    "tools": {
+      "right_paw": "A large brass ring holding several antique skeleton keys",
+      "left_paw": "A single specialized lock-pick tool, with a leather tool pouch attached to the wrist",
+      "vest_pockets": "Visible magnifying glasses, tweezers, and various metallic picking instruments"
+    },
+    "footwear": "Sturdy dark brown leather work boots with rounded toes",
+    "collar": "None"
+  },
+  "art_style": {
+    "render_type": "Pixar-style 3D digital render",
+    "lighting": "High-quality subsurface scattering on long fur and metallic brass textures",
+    "background": "Solid, muted sage-green studio",
+    "branding": [
+      "iON Aventurile lui Ionică logo (bottom right)",
+      "Nano Banana leaf logo (bottom right)"
+    ]
   }
 }
