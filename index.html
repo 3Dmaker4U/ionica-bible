@@ -127,8 +127,10 @@
         // Example: fetch(`assets/json/${slug}.json`)
         document.getElementById('char-name').innerText = slug.toUpperCase();
         document.getElementById('char-img').src = `assets/images/${slug}-dressed.png`;
-        document.getElementById('char-json-display').innerText = `assets/json/${slug}-dressed.json`;
+        document.getElementById('char-json-display').innerText = fetch(`assets/json/${slug}-dressed.json`);
     }
+}
+
 </script>
 
 </body>
