@@ -122,14 +122,26 @@
         sidebar.appendChild(link);
     });
 
-    function loadCharacter(slug) {
+    async function loadCharacter(slug) {
         // Logic to fetch your GitHub JSON and update the DOM
         // Example: fetch(`assets/json/${slug}.json`)
         document.getElementById('char-name').innerText = slug.toUpperCase();
+            try {
+                // 1. Fetch the local JSON file
+                const response = await fetch('assets/json/${slug}.json');
+                // 2. Check if the request was successful
+                if (!response.ok) throw new Error('File not found');
+                // 3. Parse the data into a JS object
+                const data = await response.json();
+                // 4. Display formatted JSON (null and 2 add indentation)
+                document.getElementById('jsonDisplay').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('jsonDisplay').textContent = "Failed to load data.";
+            }
         document.getElementById('char-img').src = `assets/images/${slug}-dressed.png`;
-        document.getElementById('char-json-display').innerText = fetch(`assets/json/${slug}-dressed.json`);
     }
-
+    
 </script>
 
 </body>
