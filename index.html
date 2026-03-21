@@ -61,7 +61,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .char-image-box img {
-            width: 100%;
+            width: 30%;
             border-radius: 10px;
             display: block;
         }
@@ -113,13 +113,11 @@
 <script>
     // In a real GitHub environment, you would fetch these from your /json/ folder
     // For this template, we point to the names you've established
-    const characters = ["Nonel", "Suzănica", "Codiță", "Ochilă", "Bobiță", "Pogonel"];
+    const characters = ["CHR-121", "CHR-122", "CHR-123", "CHR-124", "CHR-125", "CHR-126"];
     const sidebar = document.getElementById('sidebar');
 
-    const avatars = ["CHR-121", "CHR-122", "CHR-123", "CHR-124", "CHR-125", "CHR-126"];
-
-    
-    avatars.forEach(name => {
+   
+    characters.forEach(name => {
         const link = document.createElement('a');
         link.className = 'char-link';
         link.innerText = name;
