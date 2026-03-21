@@ -96,11 +96,7 @@
     <div class="profile-container">
         <div class="char-image-box">
             <img id="char-img" src="assets/images/placeholder.png" alt="Character Avatar">
-<!--
-            <img id="char-img-dressed" src="assets/images/placeholder.png" alt="Character Avatar"> 
--->
         </div>
-<!--
         <div class="char-details">
             <h1 id="char-name">Select a Character</h1>
             <p id="char-title"><i>Aventurile lui Ionică</i></p>
@@ -108,7 +104,6 @@
                 Select a character from the sidebar to view their technical JSON specifications.
             </div>
         </div>
- -->
     </div>
 </main>
 
@@ -131,10 +126,9 @@
         // Logic to fetch your GitHub JSON and update the DOM
         // Example: fetch(`assets/json/${slug}.json`)
         document.getElementById('char-name').innerText = slug.toUpperCase();
-        document.getElementById('char-img').src = `assets/images/${slug}-naked.png;
-        // document.getElementById('char-img-dressed').src = `assets/images/${slug}-dressed.png`;
+        document.getElementById('char-img').src = `assets/images/${slug}-naked.png`;
+        document.getElementById('char-json-display').innerText = `Fetching ${slug}.json data...`;
     }
-    
 </script>
 
 </body>
