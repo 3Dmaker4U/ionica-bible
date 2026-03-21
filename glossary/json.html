@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Code Viewport</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 { color: #333; }
+
+        /* The Code Viewport Container */
+        .code-viewport {
+            background-color: #1e1e1e; /* VS Code style dark background */
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 800px;
+            overflow-x: auto; /* Scrollbar for long lines */
+            border: 1px solid #333;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Loading & Error States */
+        .status { margin-bottom: 10px; font-size: 0.9em; }
+        .error { color: #ff5f56; }
+    </style>
+</head>
+<body>
+
+    <h2>Raw Data Viewport</h2>
+    <div id="status-msg" class="status">Fetching data...</div>
+
+    <div class="code-viewport">
+        <pre><code id="json-output">/* Data will load here... */</code></pre>
+    </div>
+
+    <script>
+        async function fetchAndDisplayJSON() {
+            const output = document.getElementById('json-output');
+            const status = document.getElementById('status-msg');
+
+            try {
+                const response = await fetch('data.json');
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to load: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // The magic happens here: 
+                // JSON.stringify(data, replacer, space)
+                // The '4' tells JS to indent with 4 spaces.
+                output.textContent = JSON.stringify(data, null, 4);
+                status.textContent = "Data loaded successfully.";
+                status.style.color = "green";
+
+            } catch (err) {
+                status.textContent = "Error: " + err.message;
+                status.classList.add('error');
+                output.textContent = "// Could not parse or find data.json";
+            }
+        }
+
+        fetchAndDisplayJSON();
+    </script>
+</body>
+</html>
