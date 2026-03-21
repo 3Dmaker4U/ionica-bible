@@ -1,0 +1,37 @@
+{
+  "character": "Pogonel",
+  "title": "The Guardian of the Courtyard",
+  "series": "Aventurile lui Ionică",
+  "physical_traits": {
+    "species": "Hedgehog",
+    "build": "Rotund, chubby 'fatty' build",
+    "stance": "Bipedal (standing upright)",
+    "fur_and_quills": {
+      "belly": "Cream-colored, soft, dense, and curly peach-fuzz fur",
+      "back_quills": "Sharp, dual-toned (dark brown/black and white) quills",
+      "hair_style": "Quills arranged into a tall, vertical punk-style mohawk"
+    },
+    "facial_features": "Small, pointed nose and rounded ears with peach-fuzz texture",
+    "eyes": "Large, soulful, dark forest-green eyes"
+  },
+  "expression": {
+    "mood": "Playful and mischievous bravery",
+    "mouth": "Wide 'cat-food' grin with visible small teeth",
+    "gaze": "Direct and joyful"
+  },
+  "outfit_and_accessories": {
+    "weaponry": "Vintage wooden flintlock rifle with polished brass details",
+    "gear": "Leather bandolier draped across the chest with visible ammunition shells and a small leather pouch",
+    "footwear": "Rugged, weathered brown leather combat boots with laces",
+    "collar": "None"
+  },
+  "art_style": {
+    "render_type": "Pixar-style 3D digital render",
+    "lighting": "High-quality subsurface scattering on soft fur and skin",
+    "background": "Solid, muted sage-green studio",
+    "branding": [
+      "iON Aventurile lui Ionică logo (bottom right)",
+      "Nano Banana leaf logo (bottom right)"
+    ]
+  }
+}

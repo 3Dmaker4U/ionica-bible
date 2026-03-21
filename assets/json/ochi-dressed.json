@@ -1,0 +1,41 @@
+{
+  "character": "Ochilă",
+  "title": "The Hungriest Doggie",
+  "series": "Aventurile lui Ionică",
+  "physical_traits": {
+    "species": "Dog",
+    "build": "Chubby, rotund fatty build",
+    "stance": "Bipedal (standing upright)",
+    "fur_description": "Dense, short-hair black fur with a white chest patch and white 'mittens' on all four paws",
+    "facial_features": "Grizzled gray muzzle and eye area indicative of a distinguished age",
+    "eyes": {
+      "color": "Ice-blue",
+      "special_effect": "Extremely magnified pupils/irises via thick lenses, pulling the color to the edges of the frame"
+    }
+  },
+  "expression": {
+    "mood": "Intense joyful anticipation",
+    "mouth": "Wide-open 'cat-food' grin with visible teeth and tongue hanging out sideways",
+    "detail": "Small, strategic drool bubble hanging from the lower lip",
+    "gaze": "Fixed upward, focused on an unseen treat"
+  },
+  "outfit_and_accessories": {
+    "eyewear": "Round, thin-framed gold wire spectacles (magnifying lenses)",
+    "neckwear": "Generous white cotton napkin with a red border trim, draped over the chest",
+    "tools": {
+      "right_paw": "Polished silver dining fork (held upright)",
+      "left_paw": "Polished silver dining knife"
+    },
+    "footwear": "Vibrant red suede slippers with soft fleece trim",
+    "collar": "None (removed for dining comfort)"
+  },
+  "art_style": {
+    "render_type": "Pixar-style 3D digital render",
+    "lighting": "Soft subsurface scattering on fur and skin",
+    "background": "Solid, muted sage-green studio",
+    "branding": [
+      "iON Aventurile lui Ionică logo (bottom right)",
+      "Nano Banana leaf logo (bottom right)"
+    ]
+  }
+}

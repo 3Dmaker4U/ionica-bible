@@ -1,0 +1,38 @@
+{
+  "character": "Suzy",
+  "title": "The Victorian Lady",
+  "series": "Aventurile lui Ionică",
+  "physical_traits": {
+    "species": "Cat",
+    "breed": "Brown Tabby",
+    "build": "Chubby, pear-shaped fatty build",
+    "stance": "Bipedal (standing upright)",
+    "fur_description": "Dense, soft tabby fur with distinct dark stripes and a thick, ringed tail",
+    "facial_features": "Round face with prominent white whiskers and a small pink nose",
+    "eyes": "Large, soulful green eyes with a gentle expression"
+  },
+  "expression": {
+    "mood": "Elegant and demure",
+    "mouth": "Closed, subtle smile",
+    "gaze": "Soft and direct"
+  },
+  "outfit_and_accessories": {
+    "clothing": "Dark brown A-line dress with intricate cream lace trim on the collar, cuffs, and hem",
+    "headwear": "Wide-brimmed dark brown straw hat with a deep crimson silk ribbon",
+    "accessories": {
+      "parasol": "Antique beige lace parasol with a wooden handle, held bipedally",
+      "gloves": "Cream-colored lace fingerless gloves"
+    },
+    "footwear": "Polished crimson-red high-heeled pumps",
+    "collar": "None"
+  },
+  "art_style": {
+    "render_type": "Pixar-style 3D digital render",
+    "lighting": "High-quality subsurface scattering on fur and lace textures",
+    "background": "Solid, muted sage-green studio",
+    "branding": [
+      "iON Aventurile lui Ionică logo (bottom right)",
+      "Nano Banana leaf logo (bottom right)"
+    ]
+  }
+}
