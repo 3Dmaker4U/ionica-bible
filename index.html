@@ -95,8 +95,10 @@
 <main id="stage">
     <div class="profile-container">
         <div class="char-image-box">
-            <img id="char-img" src="assets/images/placeholder.png" alt="Character Avatar">
+            <img id="char-img-0" src="assets/images/placeholder.png" alt="Character Avatar Naked">
+            <img id="char-img-1" src="assets/images/placeholder.png" alt="Character Avatar Dresesd">
         </div>
+<!--
         <div class="char-details">
             <h1 id="char-name">Select a Character</h1>
             <p id="char-title"><i>Aventurile lui Ionică</i></p>
@@ -104,30 +106,32 @@
                 Select a character from the sidebar to view their technical JSON specifications.
             </div>
         </div>
+-->
     </div>
 </main>
 
 <script>
     // In a real GitHub environment, you would fetch these from your /json/ folder
     // For this template, we point to the names you've established
-    const characters = ["None", "Suzi", "Codi", "Ochi", "Bobi", "Pogo"];
-
+    const characters = ["Nonel", "Suzănica", "Codiță", "Ochilă", "Bobiță", "Pogonel"];
     const sidebar = document.getElementById('sidebar');
+
+    const avatars = ["CHR-121", "CHR-122", "CHR-123", "CHR-124", "CHR-125", "CHR-126"];
+
     
-    characters.forEach(name => {
+    avatars.forEach(name => {
         const link = document.createElement('a');
         link.className = 'char-link';
         link.innerText = name;
-        link.onclick = () => loadCharacter(name.toLowerCase());
+        link.onclick = () => loadCharacter(name);
         sidebar.appendChild(link);
     });
 
     function loadCharacter(slug) {
         // Logic to fetch your GitHub JSON and update the DOM
         // Example: fetch(`assets/json/${slug}.json`)
-        document.getElementById('char-name').innerText = slug.toUpperCase();
-        document.getElementById('char-img').src = `assets/images/${slug}-naked.png`;
-        document.getElementById('char-json-display').innerText = `Fetching ${slug}.json data...`;
+        document.getElementById('char-img-0').src = `assets/images/${slug}-0.png`;
+        document.getElementById('char-img-1').src = `assets/images/${slug}-1.png`;
     }
 </script>
 
