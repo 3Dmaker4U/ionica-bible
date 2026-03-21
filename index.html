@@ -128,7 +128,7 @@
         document.getElementById('char-name').innerText = slug.toUpperCase();
             try {
                 // 1. Fetch the local JSON file
-                const response = await fetch('assets/json/${slug}.json');
+                const response = await fetch('assets/json/${slug}-dressed.json');
                 // 2. Check if the request was successful
                 if (!response.ok) throw new Error('File not found');
                 // 3. Parse the data into a JS object
