@@ -2,83 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Code Viewport</title>
+    <title>JSON Syntax Highlighter</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h2 { color: #333; }
-
-        /* The Code Viewport Container */
-        .code-viewport {
-            background-color: #1e1e1e; /* VS Code style dark background */
-            color: #d4d4d4;
+        body { background-color: #121212; font-family: 'Consolas', monospace; padding: 30px; }
+        .code-container {
+            background: #1e1e1e;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            width: 100%;
-            max-width: 800px;
-            overflow-x: auto; /* Scrollbar for long lines */
+            border-radius: 6px;
             border: 1px solid #333;
-        }
-
-        pre {
-            margin: 0;
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            font-size: 14px;
             line-height: 1.5;
+            color: #d4d4d4;
+            white-space: pre-wrap; /* Maintains spacing/newlines */
         }
-
-        /* Loading & Error States */
-        .status { margin-bottom: 10px; font-size: 0.9em; }
-        .error { color: #ff5f56; }
+        /* Syntax Colors */
+        .json-key    { color: #9cdcfe; } /* Light Blue */
+        .json-string { color: #ce9178; } /* Orange/Brown */
+        .json-number { color: #b5cea8; } /* Light Green */
+        .json-boolean{ color: #569cd6; } /* Darker Blue */
+        .json-null   { color: #569cd6; }
     </style>
 </head>
 <body>
 
-    <h2>Raw Data Viewport</h2>
-    <div id="status-msg" class="status">Fetching data...</div>
-
-    <div class="code-viewport">
-        <pre><code id="json-output">/* Data will load here... */</code></pre>
-    </div>
+    <div id="viewport" class="code-container">Loading JSON...</div>
 
     <script>
-        async function fetchAndDisplayJSON() {
-            const output = document.getElementById('json-output');
-            const status = document.getElementById('status-msg');
+        // A simple regex-based syntax highlighter
+        function syntaxHighlight(json) {
+            if (typeof json !== 'string') {
+                json = JSON.stringify(json, null, 4);
+            }
+            // Escape HTML characters
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            
+            // Regex to find keys, strings, numbers, booleans
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                let cls = 'json-number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'json-key';
+                    } else {
+                        cls = 'json-string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'json-boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'json-null';
+                }
+                return `<span class="${cls}">${match}</span>`;
+            });
+        }
 
+        async function loadData() {
+            const viewport = document.getElementById('viewport');
             try {
                 const response = await fetch('nonel-dressed.json');
+                if (!response.ok) throw new Error("HTTP error " + response.status);
                 
-                if (!response.ok) {
-                    throw new Error(`Failed to load: ${response.status}`);
-                }
-
                 const data = await response.json();
-
-                // The magic happens here: 
-                // JSON.stringify(data, replacer, space)
-                // The '2' tells JS to indent with 2 spaces.
-                output.textContent = JSON.stringify(data, null, 2);
-                status.textContent = "Data loaded successfully.";
-                status.style.color = "green";
-
+                
+                // Inject the highlighted HTML
+                viewport.innerHTML = syntaxHighlight(data);
+                
             } catch (err) {
-                status.textContent = "Error: " + err.message;
-                status.classList.add('error');
-                output.textContent = "// Could not parse or find data.json";
+                viewport.innerHTML = `<span style="color:red">Error: ${err.message}</span>`;
             }
         }
 
-        fetchAndDisplayJSON();
+        loadData();
     </script>
 </body>
 </html>
