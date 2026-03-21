@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiminy's Studio - Character Bible</title>
+    <style>
+        :root {
+            --sage-green: #8da38c;
+            --studio-dark: #2c2c2c;
+            --accent-gold: #d4af37;
+            --text-light: #f4f4f4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--studio-dark);
+            color: var(--text-light);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+        }
+        /* Sidebar Navigation */
+        nav {
+            width: 250px;
+            background-color: #1a1a1a;
+            border-right: 2px solid var(--accent-gold);
+            padding: 20px;
+            overflow-y: auto;
+        }
+        nav h2 { color: var(--accent-gold); font-size: 1.2rem; }
+        .char-link {
+            display: block;
+            padding: 10px;
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+            border-bottom: 1px solid #333;
+        }
+        .char-link:hover { color: white; background: #333; }
+
+        /* Main Stage */
+        main {
+            flex-grow: 1;
+            padding: 40px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .profile-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        .char-image-box {
+            flex: 1;
+            background: var(--sage-green);
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .char-image-box img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+        .char-details {
+            flex: 1;
+        }
+        .badge {
+            background: var(--accent-gold);
+            color: black;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        h1 { margin-top: 0; color: var(--accent-gold); }
+        .traits-list {
+            background: #3d3d3d;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+<nav id="sidebar">
+    <h2>STUDIO BIBLE</h2>
+    </nav>
+
+<main id="stage">
+    <div class="profile-container">
+        <div class="char-image-box">
+            <img id="char-img" src="assets/images/placeholder.png" alt="Character Avatar">
+        </div>
+        <div class="char-details">
+            <h1 id="char-name">Select a Character</h1>
+            <p id="char-title"><i>Aventurile lui Ionică</i></p>
+            <div id="char-json-display" class="traits-list">
+                Select a character from the sidebar to view their technical JSON specifications.
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    // In a real GitHub environment, you would fetch these from your /json/ folder
+    // For this template, we point to the names you've established
+    const characters = ["None", "Suzi", "Codi", "Ochi", "Bobi", "Pogo"];
+
+    const sidebar = document.getElementById('sidebar');
+    
+    characters.forEach(name => {
+        const link = document.createElement('a');
+        link.className = 'char-link';
+        link.innerText = name;
+        link.onclick = () => loadCharacter(name.toLowerCase());
+        sidebar.appendChild(link);
+    });
+
+    function loadCharacter(slug) {
+        // Logic to fetch your GitHub JSON and update the DOM
+        // Example: fetch(`assets/json/${slug}.json`)
+        document.getElementById('char-name').innerText = slug.toUpperCase();
+        document.getElementById('char-img').src = `assets/images/${slug}_dressed.png`;
+        document.getElementById('char-json-display').innerText = `Fetching ${slug}.json data...`;
+    }
+</script>
+
+</body>
+</html>
