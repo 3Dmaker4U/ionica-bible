@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to Definition List</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 600px; }
+        dt { font-weight: bold; color: #2c3e50; margin-top: 10px; }
+        dd { margin-left: 20px; font-style: italic; color: #34495e; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Terminology Guide</h1>
+    <dl id="data-container">
+        </dl>
+
+    <script>
+        async function loadDefinitions() {
+            const container = document.getElementById('data-container');
+            
+            try {
+                // Fetch the JSON file from the local directory
+                const response = await fetch('data.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Map the data to HTML strings and join them
+                container.innerHTML = data.map(item => `
+                    <dt>${item.term}</dt>
+                    <dd>${item.definition}</dd>
+                `).join('');
+
+            } catch (error) {
+                console.error("Could not fetch JSON:", error);
+                container.innerHTML = `<p class="error">Error loading data. (Ensure you are using a local server!)</p>`;
+            }
+        }
+
+        // Initialize the fetch on page load
+        loadDefinitions();
+    </script>
+</body>
+</html>
