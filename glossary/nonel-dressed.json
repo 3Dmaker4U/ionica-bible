@@ -1,0 +1,45 @@
+{
+  character_name Nonel,
+  archetype 1930s-style village street kid  mischievous investigator,
+  physical_traits {
+    species Cat (Tabby),
+    fur_pattern Brown and black striped tabby with specific white markings,
+    white_markings [
+      Full white muzzle,
+      Broad white chest and abdomen area,
+      White front paws (mittens),
+      White back feet and lower legs
+    ],
+    tail Banded tabby tail with a notably longer and darker black tip,
+    eyes {
+      color Pale green,
+      expression Mature, serious, slightly 'downcast' or suspicious,
+      shape Large and cartoonish but with heavy-lidded upper orbits (concave downwards)
+    }
+  },
+  outfit_and_accessories {
+    headwear {
+      type 1930s-style newsboy cap (flat cap),
+      texture Grey salt-and-pepper herringbone tweed,
+      fit Small, worn tilted to one side to leave one ear completely visible
+    },
+    clothing {
+      type Short grey work jacket,
+      style Open front, collar raised,
+      length Cropped (bottom edge aligned with sleeve ends),
+      details [
+        Single pair of hand-pockets,
+        Texture matching the cap's aesthetic
+      ]
+    },
+    artifact {
+      item Sling  Slingshot,
+      details Classic Y-shaped wooden handle with a leather pouch and elastic bands
+    }
+  },
+  visual_style {
+    render_type 3D High-fidelity digital render,
+    aesthetic Pixar-style with soft subsurface scattering and dense fur texture,
+    background Solid muted sage green studio backdrop
+  }
+}
