@@ -2,48 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>JSON Syntax Highlighter</title>
+    <title>JSON Viewport with Copy</title>
     <style>
         body { background-color: #121212; font-family: 'Consolas', monospace; padding: 30px; }
+        
+        /* Container for the viewport and button */
+        .viewport-wrapper {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
         .code-container {
             background: #1e1e1e;
             padding: 20px;
-            border-radius: 6px;
+            border-radius: 8px;
             border: 1px solid #333;
             line-height: 1.5;
             color: #d4d4d4;
-            white-space: pre-wrap; /* Maintains spacing/newlines */
+            white-space: pre-wrap;
+            overflow-x: auto;
+            min-height: 100px;
         }
+
+        /* Copy Button Style */
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover { background: #444; }
+        .copy-btn.success { background: #28a745; border-color: #28a745; }
+
         /* Syntax Colors */
-        .json-key    { color: #9cdcfe; } /* Light Blue */
-        .json-string { color: #ce9178; } /* Orange/Brown */
-        .json-number { color: #b5cea8; } /* Light Green */
-        .json-boolean{ color: #569cd6; } /* Darker Blue */
-        .json-null   { color: #569cd6; }
+        .json-key    { color: #9cdcfe; }
+        .json-string { color: #ce9178; }
+        .json-number { color: #b5cea8; }
+        .json-boolean, .json-null { color: #569cd6; }
     </style>
 </head>
 <body>
 
-    <div id="viewport" class="code-container">Loading JSON...</div>
+    <div class="viewport-wrapper">
+        <button class="copy-btn" id="copy-btn">Copy JSON</button>
+        <div id="viewport" class="code-container">Loading...</div>
+    </div>
 
     <script>
-        // A simple regex-based syntax highlighter
-        function syntaxHighlight(json) {
-            if (typeof json !== 'string') {
-                json = JSON.stringify(json, null, 4);
-            }
-            // Escape HTML characters
-            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            
-            // Regex to find keys, strings, numbers, booleans
-            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+        let rawJson = ""; // Store clean string for copying
+
+        function syntaxHighlight(jsonStr) {
+            // Escape HTML and apply regex for colors
+            const escaped = jsonStr.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return escaped.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
                 let cls = 'json-number';
                 if (/^"/.test(match)) {
-                    if (/:$/.test(match)) {
-                        cls = 'json-key';
-                    } else {
-                        cls = 'json-string';
-                    }
+                    cls = (/:$/.test(match)) ? 'json-key' : 'json-string';
                 } else if (/true|false/.test(match)) {
                     cls = 'json-boolean';
                 } else if (/null/.test(match)) {
@@ -53,23 +76,42 @@
             });
         }
 
-        async function loadData() {
+        async function init() {
             const viewport = document.getElementById('viewport');
+            const btn = document.getElementById('copy-btn');
+
             try {
-                const response = await fetch('nonel-dressed.json');
-                if (!response.ok) throw new Error("HTTP error " + response.status);
-                
+                const response = await fetch('data.json');
                 const data = await response.json();
                 
-                // Inject the highlighted HTML
-                viewport.innerHTML = syntaxHighlight(data);
+                // 1. Store formatted string for the clipboard
+                rawJson = JSON.stringify(data, null, 4);
                 
+                // 2. Display with colors
+                viewport.innerHTML = syntaxHighlight(rawJson);
+
+                // 3. Set up Copy listener
+                btn.addEventListener('click', async () => {
+                    try {
+                        await navigator.clipboard.writeText(rawJson);
+                        btn.textContent = "Copied!";
+                        btn.classList.add('success');
+                        
+                        setTimeout(() => {
+                            btn.textContent = "Copy JSON";
+                            btn.classList.remove('success');
+                        }, 2000);
+                    } catch (err) {
+                        alert("Failed to copy!");
+                    }
+                });
+
             } catch (err) {
                 viewport.innerHTML = `<span style="color:red">Error: ${err.message}</span>`;
             }
         }
 
-        loadData();
+        init();
     </script>
 </body>
 </html>
