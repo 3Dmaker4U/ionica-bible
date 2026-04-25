@@ -23,7 +23,7 @@
     {
       "timestamp": "2026-04-23 20:59:45",
       "phase": "PoC",
-      "role": "Writter",
+      "role": "Writer",
       "peer": "Author",
       "step": "Role Initialization",
       "status": "Completed",
