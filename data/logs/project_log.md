@@ -1,6 +1,5 @@
 # JSON Project Log
 
-```json
 {
   "project_metadata": {
     "project": "Aventurile lui Ionică",
@@ -113,4 +112,3 @@
     }
   ]
 }
-```
